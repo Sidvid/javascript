@@ -1,23 +1,33 @@
-const fun = (state) => {
+const findWinner = (type) => {
   return new Promise((resolve, reject) => {
-    if (state) {
-      resolve("Yeahhh .. Great success");
-    } else {
-      reject("Ohhh....failed");
+    switch (true) {
+      case type <= 10 && type >= 0:
+        resolve(`A is winner because he got ${type} vote`);
+        break;
+      case type > 10 && type <= 50:
+        resolve(`B is winner because he got ${type} vote`);
+        break;
+      case type > 50:
+        resolve(`C is winner because he got ${type} vote`);
+        break;
+      default:
+        reject("Error while counting");
+        break;
     }
   });
 };
-let promise = fun(true);
-promise
-  .then((msg) => {
-    console.log("first then", msg);
-    return fun(false)
+const electionOneResult = findWinner(30);
+electionOneResult
+  .then((message) => {
+    console.log(message);
+    const reElection = findWinner(90);
+
+    return reElection;
   })
-  .then((msg) => {
-    console.log("second then", msg);
+  .then((message) => {
+    // message();
+    console.log(message);
   })
   .catch((err) => {
-    console.log("catchh one", err);
-  }).then((msg)=>{
-    console.log("then three" , msg);
-  })
+    console.log(err);
+  });

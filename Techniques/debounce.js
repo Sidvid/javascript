@@ -1,11 +1,14 @@
-function output (val){
-    console.log(val);
+function debounce(callback, delay) {
+  let timer;
+  return function (...args) {
+    clearInterval(timer);
+    timer = setTimeout(() => {
+      callback.apply(this, args);
+    }, delay);
+  };
 }
-function debounce(data){
-    setTimeout(()=>{
-        output(data)
-
-    },2000)
-
-}
-debounce("input")
+const inputEnter = (val) => {
+  return `This is input and will be delayed -${val}`;
+};
+const delayInput = debounce(inputEnter, 2000);
+console.log(delayInput("Sorry for delay"));

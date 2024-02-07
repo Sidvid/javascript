@@ -1,44 +1,18 @@
-// function difference(array, values) {
-//   return [
-//     ...array
-//       .map((elem, index) => ({ elem, index }))
-//       .filter((elem) => {
-//         console.log("->", elem);
-//         if (elem.elem === "" || elem.elem === undefined || elem.elem === null) {
-//           console.log("HER");
-//           return elem.elem;
-//         }
-//         return !values.find((val) => elem.elem === val);
-//       }),
-//   ];
-// }
-// console.log(difference([1, , 3], [1]));
-function difference(array, values) {
-  // write your code below
-
-  const isValidArray = Array.isArray(array) && array.length;
-  const isValuesArrayValid = Array.isArray(values) && values.length;
-
-  // early escape conditions
-  if (!isValidArray) {
-    return [];
-  } else if (isValidArray && !isValuesArrayValid) {
-    return array;
-  } else if (!isValuesArrayValid && !isValuesArrayValid) {
-    return [];
+class Calculator {
+  constructor() {
+    this.total = 0;
   }
 
-  const allUniqueValues = new Set(array);
+  add(val) {
+    this.total += val;
+    return this; // Return the instance of the Calculator object
+  }
 
-  const toExclude = new Set(values);
-  const excludedValues = [];
-
-  allUniqueValues.forEach((value) => {
-    if (!toExclude.has(value)) {
-      excludedValues.push(value);
-    }
-  });
-
-  return excludedValues;
+  sub(val) {
+    this.total -= val;
+    return this; // Return the instance of the Calculator object
+  }
 }
-console.log(difference([1, , 3], [1]));
+
+const eq1 = new Calculator();
+console.log(eq1.add(10).sub(5).total); // Output: 5
