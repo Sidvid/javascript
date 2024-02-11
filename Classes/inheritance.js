@@ -1,32 +1,23 @@
-class Person {
-  constructor(name, age, height, gender) {
+class Animal {
+  constructor(name, speed, hide) {
     this.name = name;
-    this.age = age;
-    this.height = height;
-    this.gender = gender;
-    this.country = "India";
+    this.speed = speed;
+    this.hide = hide;
   }
- static getHeight() {
-    return `height of ${this.name} is ${this.height}`;
+  getSpeed(currentSpeed) {
+    return `${this.name} can run at ${this.speed} but he is running at ${currentSpeed} km/hr`;
   }
-  getAge() {
-    return `Age of ${this.name} is ${this.age}`;
-  }
-  getGender() {
-    return `Gender of ${this.name} is ${this.gender}`;
+  isHide() {
+    return `${this.name} can hide : ${this.hide ? "Yes" : "No"}`;
   }
 }
-class Student extends Person {
-  constructor(name, age, height, gender) {
-    super(name, age, height, gender);
-    this.category = "Student";
+class Rabbit extends Animal {
+  constructor(name, speed, hide) {
+    super(name, speed, hide);
   }
-  getCategory() {
-    return `${this.name} is a ${this.category}`;
+  canJump() {
+    return `${this.name} can jump high.`;
   }
 }
-const robin = new Student("Robin", 30, 5, "male");
-// console.log(robin.getCategory());
-// console.log(robin.getHeight());
-
-
+const rabbit1 = new Rabbit("Rabbit One", 10, true);
+console.log(rabbit1.canJump());

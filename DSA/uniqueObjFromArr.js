@@ -16,11 +16,11 @@
 //     name: "joe",
 //   },
 // ];
-// const uniqueElem = (array, key) => {
-//   return array.filter((elem, index) => {
-//     return array.findLastIndex((s) => s[key] === elem[key]) === index;
-//   });
-// };
+const uniqueElem = (array, key) => {
+  return array.filter((elem, index) => {
+    return array.findLastIndex((s) => s[key] === elem[key]) === index;
+  });
+};
 // console.log(uniqueElem(arr, "id"));
 function findKeyPath(obj, targetKey, currentPath = []) {
   for (const key in obj) {
