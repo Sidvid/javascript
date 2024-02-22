@@ -1,15 +1,17 @@
-const func1 = () => console.log(1);
-
-func1();
-
-func2();
-
-function func2() {
-  console.log(2);
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  getDetails() {
+    return `My name is ${this.name} and my age is ${this.age}`;
+  }
 }
-
-func3();
-
-var func3 = function func4() {
-  console.log(3);
+const p1 = Person("John", 25);
+Person.prototype.canVote = function canVote() {
+  if (this.age > 18) {
+    return `Yes you can vote`;
+  }
+  return `Ohhh !! you cannot vote `;
 };
+console.log(p1);
