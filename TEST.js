@@ -1,14 +1,10 @@
-const obj = {
-  b: 1,
-  a: (function () {
-    return () => {
-      console.log(this.b);
-    };
-  })(),
-  c: function () {
-    return function () {
-      console.log(this.b);
-    };
-  },
+Function.prototype.myCall = function (context, args) {
+  console.log(context);
 };
-console.log(obj.a());
+const person = {
+  name: "sid",
+};
+const test = (name) => {
+  return `My name is ${this.name} ${name}`;
+};
+test.myCall(person, "Siddhartha");
